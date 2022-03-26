@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="PromptPay QR Code Generator สร้างคิวอาร์โค๊ดการชำระเงินผ่านบริการพร้อมเพย์" />
+  <meta property="og:site_name" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:description"
+    content="แค่มีเบอร์มือถือ, รหัสประจำตัวประชาชน, TAX ID หรือ e-Wallet ก็สามารถโอนเงินผ่านระบบพร้อมเพย์ได้แล้ว" />
+  <meta property="og:image" content="./img/meta-screen.png" />
+  <title>PromptPay QR Code Generator สร้างคิวอาร์โค๊ดการชำระเงินผ่านบริการพร้อมเพย์</title>
+
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/new-age.min.css">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.min.css">
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">สร้างคิวอาร์โค๊ดการชำระเงินผ่านบริการพร้อมเพย์ PromptPay QR Code Generator</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#generate">สร้าง QR Code รับเงิน</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 my-auto content-header">
+          <div class="header-content mx-auto">
+            <h1 class="mb-3">การโอน จ่าย จะไม่ยุ่งยากอีกต่อไป</h1>
+            <p class="mb-5">แค่มีเบอร์มือถือ, รหัสประจำตัวประชาชน, TAX ID หรือ e-Wallet
+              เพียงอย่างใดอย่างหนึ่งก็สามารถโอนเงินผ่านระบบพร้อมเพย์ได้แล้ว</p>
+            <p class="mb-5">สามารถสร้างรหัสการชำระเงินได้ทั้งแบบระบุจำนวนเงินและไม่ระบุจำนวนเงิน</p>
+            <p class="mb-5">เว็บไซต์นี้เปิดให้ใช้งานได้ฟรี และที่สำคัญ <b>ไม่มีการเก็บข้อมูลใดๆ ของคุณ</b></p>
+            <a href="#generate" class="btn btn-outline btn-xl js-scroll-trigger">สร้าง QR Code รับเงิน</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="text-center" id="generate">
+    <div class="generate-section">
+      <div class="container generate-content">
+        <div class="row generate-form">
+          <div class="col-md-8 mx-auto" style="margin-top:90px;">
+            <form>
+              <div class="form-group">
+                <label>พร้อมเพย์ ไอดี Promptpay ID</label>
+                <input type="number" pattern="\d*" class="form-control" id="pp-id"
+                  placeholder="เบอร์มือถือ, รหัสประจำตัวประชาชน, TAX ID, e-Wallet"
+                  onKeyPress="if(this.value.length==15) return false;" required>
+              </div>
+              <div class="form-group error">
+                <label>จำนวนเงิน</label>
+                <input type="number" step="0.01" class="form-control" id="amount" placeholder="1000.00 (Optional จะใส่หรือไม่ก็ได้ หากไม่ใส่ผู้จ่ายจะเป็นผู้ระบุจำนวนเงิน)">
+              </div>
+              <div class="form-group error">
+                <label>ชื่อบัญชี</label>
+                <input type="text" step="0.01" class="form-control" id="acname" placeholder="นางสาวพร้อมเพย์ (Optional จะใส่หรือไม่ก็ได้ ชื่อที่ใส่จะแสดงอยู่ด้านล่างของ QR Code)">
+              </div>
+              <button type="button" class="btn btn-primary btn-lg" id="myBtn">สร้าง QR Code รับเงิน</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Made with ❤ by <a href="https://badeesorn.com">Badeesorn Sitthikong </a> |&nbsp<a href="https://github.com/badeesorn">Project Page</a>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">QR Code รับเงิน</h4>
+        </div>
+        <div class="modal-body" style="margin: auto;">
+          <img src="img/PromptPay-logo.jpg" alt="พร้อมเพย์" style="max-width: 250px;margin-bottom: 10px;">
+          <div id="qrcode" style="width:250px; height:250px;"></div>
+          หมายเลขพร้อมเพย์
+          <div id="pp-id-show" style="text-align: center; margin-top: 10px;"></div>
+          <div id="amount-show" style="text-align: center;"></div>
+          <div id="acname-show" style="text-align: center;"></div>
+          <div id="info-show" style="text-align: center; font-size: 70%; margin-top: 10px; color: #A6A6A6;">
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default close-button" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/qrcode.min.js"></script>
+  <script type="text/javascript" src="js/promptpay.js"></script>
+
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <script src="js/new-age.min.js"></script>
+
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      width: 250,
+      height: 250,
+      correctLevel: QRCode.CorrectLevel.L
+    });
+
+    function makeCode() {
+      var ppID = document.getElementById("pp-id").value;
+      var amount = parseFloat(document.getElementById("amount").value);
+      var acname = document.getElementById("acname").value;
+      if (!ppID) {
+        ppID = "promptpay.github.io";
+      }
+
+      qrcode.makeCode(generatePayload(ppID, amount, acname));
+      $("#pp-id-show").html(ppID);
+      $("#acname-show").html(acname);
+      if (amount > 0.0) {
+        $("#amount-show").html(Number(amount.toFixed(2)).toLocaleString() + " บาท");
+      } else {
+        $("#amount-show").html("");
+      }
+    }
+
+    $(document).ready(function () {
+      $("#myBtn").click(function () {
+        var ppID = document.getElementById("pp-id").value;
+        var amount = parseFloat(document.getElementById("amount").value);
+        var acname = document.getElementById("acname").value;
+        if (ppID == '') {
+          $('#pp-id').addClass('is-invalid')
+        } else {
+          $('#amount').removeClass('is-invalid')
+          $('#pp-id').removeClass('is-invalid')
+          $('#acname').removeClass('is-invalid')
+          makeCode();
+          $("#pp-id").
+          on("blur", function () {
+            makeCode();
+          }).
+          on("keydown", function (e) {
+            if (e.keyCode == 13) {
+              makeCode();
+            }
+          });
+          $("#amount").
+          on("blur", function () {
+            makeCode();
+          }).
+          on("keydown", function (e) {
+            if (e.keyCode == 13) {
+              makeCode();
+            }
+          });
+          $("#acname").
+          on("blur", function () {
+            makeCode();
+          }).
+          on("keydown", function (e) {
+            if (e.keyCode == 13) {
+              makeCode();
+            }
+          });
+          $("#myModal").modal();
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
